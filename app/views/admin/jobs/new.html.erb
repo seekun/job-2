@@ -1,0 +1,9 @@
+<h1> Add a job </h1>
+
+<%= simple_form_for [:admin,@job] do |f| %>
+<!-- 注意加入:admin -->
+<%= f.input :title %>
+<%= f.input :description %>
+
+  <%= f.submit "Submit" %>
+<% end %>
