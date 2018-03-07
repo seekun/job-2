@@ -2,7 +2,7 @@ class Admin::JobsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
 # admin 控制系统,在model/user.rb中有 amdin? 方法的定义,便于管理和阅读
   before_action :require_is_admin
-  
+
   def index
     @jobs = Job.all
   end
@@ -38,6 +38,6 @@ class Admin::JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :description)
+    params.require(:job).permit(:title, :description, :wage_upper_bound, :wage_lower_bound, :contact_email)
   end
 end

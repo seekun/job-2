@@ -2,8 +2,11 @@
 
 <%= simple_form_for [:admin,@job] do |f| %>
 <!-- 注意加入:admin -->
-<%= f.input :title %>
-<%= f.input :description %>
-
+<%= f.input :title, :label =>"职位"%>
+<%= f.input :description, :label =>"详情描述" %>
+<%= f.input :wage_lower_bound, :label => "薪资下限"%>
+<%= f.input :wage_upper_bound, :label => "薪资上限"%>
+<!-- <%= f.input :wage_upper_bound, :lable => "薪资上限"%> -->
+<%= f.input :contact_email, :label => "联系邮件"%>
   <%= f.submit "Submit" %>
 <% end %>
