@@ -7,6 +7,13 @@ class JobsController < ApplicationController
 
   def show
    @job = Job.find(params[:id])
+# 使用普通用户登录，在浏览器地址栏输入
+# http://localhost:3000/jobs/x （x是被隐藏的工作的ID编号）
+# 很提示被拦截的原因
+   if @job.is_hidden
+     flash[:warning] = "This Job already archieved"
+     redirect_to root_path
+   end
 
   end
   def new

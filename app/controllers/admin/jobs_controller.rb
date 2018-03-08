@@ -2,6 +2,7 @@ class Admin::JobsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
 # admin 控制系统,在model/user.rb中有 amdin? 方法的定义,便于管理和阅读
   before_action :require_is_admin
+  layout "admin"
   def show
     @job = Job.find(params[:id])
   end
@@ -37,6 +38,23 @@ class Admin::JobsController < ApplicationController
     @job = Job.find(params[:id])
     @job.destroy
     redirect_to jobs_path
+  end
+
+  def publish
+    @job = Job.find(params[:id])
+    # @job.is_hidden = false
+    # @job.save
+     @job.publish!
+    redirect_to :back
+  end
+
+  def hide
+    @job = Job.find(params[:id])
+    # @job.is_hidden = true
+    # @job.save
+    @job.hide!
+    redirect_to :back
+    # 刷新到那个页面
   end
   private
 
